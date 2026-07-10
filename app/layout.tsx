@@ -10,8 +10,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "NIVPAP — Coming Soon",
   description: "NIVPAP Packaging & Creative Studio is launching soon. Join the waitlist.",
+    icons: {
+      icon: '/image.png', // Point directly to your single image file
+    }
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
