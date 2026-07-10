@@ -106,7 +106,7 @@ export default function Home() {
 
         {/* Logo */}
        <h1
-  className="mt-1 text-[4rem] md:text-[8rem] tracking-[0.18em] text-center text-[#111]"
+  className="mt-1 text-4xl sm:text-6xl md:text-7xl tracking-[0.18em] text-center text-[#111]"
   style={{ fontFamily: "Cinzel, Georgia, serif" }}
 >
   NIVPAP
@@ -115,45 +115,41 @@ export default function Home() {
 
         {/* Coming Soon */}
         <h2
-  className="mt-3 text-lg md:text-3xl tracking-[0.35em] text-center text-[#111]"
+  className="mt-2 text-sm sm:text-lg tracking-[0.35em] text-center text-[#111]"
   style={{ fontFamily: "Cinzel, Georgia, serif" }}
 >
   COMING SOON
 </h2>
 
         {/* Divider */}
-        <div className="w-20 h-[2px] bg-[#b8926a] rounded-full mt-3" />
+        <div className="w-16 h-[2px] bg-[#b8926a] rounded-full mt-2" />
 
         {/* Description */}
-        <div className="max-w-3xl text-center mt-4">
-          <h3 className="text-2xl md:text-4xl font-light leading-relaxed">
+        <div className="max-w-2xl text-center mt-3">
+          <h3 className="text-xl sm:text-2xl font-light leading-relaxed">
             Crafting Exceptional Packaging Experiences
           </h3>
 
-          <p className="mt-3 text-[#666] leading-7 text-base md:text-lg max-w-2xl mx-auto">
+          <p className="mt-2 text-[#666] leading-6 text-xs sm:text-sm max-w-xl mx-auto">
             At NIVPAP, we create premium packaging, branding,
             and creative solutions that help businesses stand out
             and leave a lasting impression.
           </p>
-
-          <p className="mt-3 text-[#666] text-base md:text-lg">
-            Our studio is preparing something remarkable.
-          </p>
         </div>
 
         {/* Countdown */}
-        <div className="mt-6">
-          <p className="text-center text-xs uppercase tracking-[5px] text-[#b8926a] mb-4">
+        <div className="mt-4">
+          <p className="text-center text-[10px] uppercase tracking-[4px] text-[#b8926a] mb-2">
             Launching In
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+          <div className="flex justify-center gap-3">
             {timerItems.map((item) => (
               <div
                 key={item.label}
-                className="h-24 w-24 md:h-28 md:w-28 bg-white/85 backdrop-blur-sm border border-[#d8c8b6] shadow-lg rounded-3xl flex flex-col items-center justify-center hover:-translate-y-1 transition-all duration-300"
+                className="h-16 w-16 sm:h-20 sm:w-20 bg-white/85 backdrop-blur-sm border border-[#d8c8b6] shadow-lg rounded-2xl flex flex-col items-center justify-center hover:-translate-y-1 transition-all duration-300"
               >
-                <span className="text-3xl md:text-4xl font-semibold text-[#b8926a]">
+                <span className="text-xl sm:text-2xl font-semibold text-[#b8926a]">
                   {String(item.value).padStart(2, "0")}
                 </span>
 
