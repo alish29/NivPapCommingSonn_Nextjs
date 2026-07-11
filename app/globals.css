@@ -1,24 +1,73 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ===== Custom Keyframe Animations ===== */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.15); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-20px) translateX(15px); }
+}
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(25px) translateX(-20px); }
 }
 
-@media (prefers-color-scheme: dark) {
+/* ===== Base Layer — ensures these styles aren't overridden by Tailwind reset ===== */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #07070a;
+    --foreground: #f4f4f6;
+  }
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #07070a !important;
+    color: #f4f4f6;
+    scroll-behavior: smooth;
   }
 }
 
-html, body {
-  height: 100%;
-  overflow: hidden;
-}
+/* Premium scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #07070a; }
+::-webkit-scrollbar-thumb { background: #1f1f2e; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2f2f45; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ===== Utility Layer ===== */
+@layer utilities {
+  .glow-primary {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%);
+  }
+  .glow-secondary {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 75%);
+  }
+  .glow-tertiary {
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, transparent 70%);
+  }
+
+  .anim-pulse-slow { animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+  .anim-float-slow { animation: float-slow 12s ease-in-out infinite; }
+  .anim-float-delayed { animation: float-delayed 15s ease-in-out infinite; }
+
+  .text-gradient-soon {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-panel {
+    background: rgba(13, 13, 18, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
 }

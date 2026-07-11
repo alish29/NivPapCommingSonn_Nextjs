@@ -68,37 +68,37 @@ export async function POST(req: NextRequest) {
         to: email,
         subject: `You're on the ${fromName} waitlist!`,
         html: `
-          <div style="font-family:Georgia,serif;max-width:480px;margin:0 auto;background:#f5f1ea;color:#1f1f1f;border-radius:16px;overflow:hidden;border:1px solid #d8c8b6;">
+          <div style="font-family:sans-serif;max-width:480px;margin:0 auto;background:#0a0a0a;color:#e5e5e5;border-radius:16px;overflow:hidden;border:1px solid #1a1a1a;">
             <div style="padding:40px 32px;text-align:center;">
-              <h1 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#111;">You&rsquo;re in!</h1>
-              <p style="margin:0 0 24px;font-size:15px;color:#8c7b6b;line-height:1.6;">
+              <h1 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#fff;">You&rsquo;re in!</h1>
+              <p style="margin:0 0 24px;font-size:15px;color:#737373;line-height:1.6;">
                 Thanks for joining the ${fromName} waitlist.<br/>We&rsquo;ll notify you the moment we launch.
               </p>
-              <div style="background:#fff;border:1px solid #d8c8b6;border-radius:12px;padding:20px;margin-bottom:24px;">
-                <p style="margin:0;font-size:13px;color:#8c7b6b;">Your registered email</p>
-                <p style="margin:4px 0 0;font-size:15px;color:#b8926a;font-weight:600;">${email}</p>
+              <div style="background:#141414;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:24px;">
+                <p style="margin:0;font-size:13px;color:#525252;">Your registered email</p>
+                <p style="margin:4px 0 0;font-size:15px;color:#a78bfa;font-weight:600;">${email}</p>
               </div>
-              <p style="margin:0;font-size:12px;color:#8c7b6b;">Stay tuned &mdash; something remarkable is coming from ${fromName}.</p>
+              <p style="margin:0;font-size:12px;color:#404040;">Stay tuned &mdash; something remarkable is coming from ${fromName}.</p>
             </div>
           </div>
         `,
       });
 
       if (smtpToAdmin) {
-        await transporter.sendMail({
+          await transporter.sendMail({
           from: { name: `${fromName} Waitlist`, address: fromEmail },
           to: smtpToAdmin,
           subject: 'New waitlist subscriber!',
           html: `
-            <div style="font-family:Georgia,serif;max-width:480px;margin:0 auto;background:#f5f1ea;color:#1f1f1f;border-radius:16px;overflow:hidden;border:1px solid #d8c8b6;">
+            <div style="font-family:sans-serif;max-width:480px;margin:0 auto;background:#0a0a0a;color:#e5e5e5;border-radius:16px;overflow:hidden;border:1px solid #1a1a1a;">
               <div style="padding:40px 32px;text-align:center;">
-                <h1 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#111;">New Signup!</h1>
-                <p style="margin:0 0 24px;font-size:15px;color:#8c7b6b;line-height:1.6;">A new email has been added to the ${fromName} waitlist.</p>
-                <div style="background:#fff;border:1px solid #d8c8b6;border-radius:12px;padding:20px;margin-bottom:24px;">
-                  <p style="margin:0;font-size:13px;color:#8c7b6b;">Email Address</p>
-                  <p style="margin:4px 0 0;font-size:15px;color:#b8926a;font-weight:600;">${email}</p>
+                <h1 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#fff;">New Signup!</h1>
+                <p style="margin:0 0 24px;font-size:15px;color:#737373;line-height:1.6;">A new email has been added to the ${fromName} waitlist.</p>
+                <div style="background:#141414;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:24px;">
+                  <p style="margin:0;font-size:13px;color:#525252;">Email Address</p>
+                  <p style="margin:4px 0 0;font-size:15px;color:#a78bfa;font-weight:600;">${email}</p>
                 </div>
-                <p style="margin:0;font-size:12px;color:#8c7b6b;">Received on: ${new Date().toLocaleString('en-US', { timeZone: 'UTC' })} UTC</p>
+                <p style="margin:0;font-size:12px;color:#404040;">Received on: ${new Date().toLocaleString('en-US', { timeZone: 'UTC' })} UTC</p>
               </div>
             </div>
           `,
